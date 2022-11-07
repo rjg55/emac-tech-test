@@ -29,4 +29,14 @@ describe("/cards", () => {
         });
     });
   });
+  describe("ERROR HANDLING", () => {
+    test("status 404: not found", () => {
+      return request(app)
+        .get("/caaards")
+        .expect(404)
+        .then(({ body }) => {
+          expect(body).toEqual({ msg: "Not found!" });
+        });
+    });
+  });
 });

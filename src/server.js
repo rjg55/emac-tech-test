@@ -11,4 +11,9 @@ app.get("/cards/:cardId/:sizeId?", () => {
   // respond with card by id
 });
 
+// for all 404s
+
+app.use("*", (req, res) => {
+  res.status(404).send({ msg: "Not found!" });
+});
 module.exports = { app };
