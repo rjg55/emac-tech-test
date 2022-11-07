@@ -11,3 +11,7 @@ I would have liked to add more error handling to my endpoints, particularly the 
 - ## Testing, testing, testing
 
 There are more tests that I would like to add, the util function for example needs a test for when its given an empty array or an object that is not enumerable.
+
+- ## Sizes formatting
+
+I couldn't see where the data for available sizes was (in the size: sm, title: small format) so stuck with the size formatting from the cards data
