@@ -1,4 +1,4 @@
-const app = require("../server");
+const { app } = require("../server");
 const request = require("supertest");
 
 // test('returns matching card title', async () => {
@@ -16,10 +16,10 @@ describe("/cards", () => {
       return request(app)
         .get("/cards")
         .expect(200)
-        .then((response) => {
-          expect(Array.isArray(response.body)).toEqual(true);
-          expect(response.body.length).toEqual(3);
-          expect(response.body[0]).toEqual(
+        .then(({ body }) => {
+          expect(Array.isArray(body.cards)).toEqual(true);
+          expect(body.cards.length).toEqual(3);
+          expect(body.cards[0]).toEqual(
             expect.objectContaining({
               title: "card 1 title",
               card_id: "card001",

@@ -1,6 +1,10 @@
 const { fetchAllCards } = require("../models/card.model");
 
-exports.getAllCards = (req, res) => {
-  console.log("im in the controller");
-  fetchAllCards();
+exports.getAllCards = async (req, res) => {
+  try {
+    const response = await fetchAllCards();
+    res.status(200).send({ cards: response });
+  } catch (err) {
+    console.log(err);
+  }
 };
