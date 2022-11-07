@@ -11,4 +11,4 @@ app.get("/cards/:cardId/:sizeId?", () => {
   // respond with card by id
 });
 
-module.exports = app;
+module.exports = { app };
