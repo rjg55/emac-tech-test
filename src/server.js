@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllCards } = require("./controllers/card.controller");
+const { getAllCards, getCardByID } = require("./controllers/card.controller");
 
 const app = express();
 
@@ -7,9 +7,7 @@ app.set("json spaces", 2);
 
 app.get("/cards", getAllCards);
 
-app.get("/cards/:cardId/:sizeId?", () => {
-  // respond with card by id
-});
+app.get("/cards/:cardId", getCardByID);
 
 // for all 404s
 

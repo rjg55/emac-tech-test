@@ -12,3 +12,15 @@ exports.fetchAllCards = () => {
   const response = findImageFromTemplate(filteredCards);
   return response;
 };
+
+exports.fetchCardByID = (cardId) => {
+  const singleCardFromId = cards.filter((card) => {
+    const copiedCard = { ...card };
+    return copiedCard.id === cardId;
+  });
+  singleCardFromId[0].card_id = cardId;
+  singleCardFromId[0].template = singleCardFromId[0].pages[0].templateId;
+  delete singleCardFromId[0].id;
+  const replaceTempWithImg = findImageFromTemplate(singleCardFromId);
+  return replaceTempWithImg[0];
+};

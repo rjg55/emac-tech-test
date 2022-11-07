@@ -40,3 +40,31 @@ describe("/cards", () => {
     });
   });
 });
+
+describe("/cards/:cardId", () => {
+  describe("GET", () => {
+    test("status 200 - responds with a single object identified by its ID", () => {
+      return request(app)
+        .get("/cards/card001")
+        .expect(200)
+        .then(({ body }) => {
+          expect(typeof body.card).toEqual("object");
+          expect(body.card).toEqual(
+            expect.objectContaining({
+              title: "card 1 title",
+              sizes: ["sm", "md", "gt"],
+              basePrice: 200,
+              pages: [
+                { title: "Front Cover", templateId: "template001" },
+                { title: "Inside Left", templateId: "template002" },
+                { title: "Inside Right", templateId: "template003" },
+                { title: "Back Cover", templateId: "template004" },
+              ],
+              card_id: "card001",
+              imageUrl: "/front-cover-portrait-1.jpg",
+            })
+          );
+        });
+    });
+  });
+});
