@@ -1,1 +1,1 @@
-Please add any additional notes here…
+Note on util func: in my fetchAllCards model I intend to use a util function to find and replace the templateId with the imageURL. I will test this in a seperate folder. The first half of the model uses a map protoype method and I dont think this requires testing as it has a well-known method that has been tested extensively.
