@@ -15,7 +15,6 @@ exports.getCardByID = async (req, res, next) => {
     const response = await fetchCardByID(cardId);
     res.status(200).send({ card: response });
   } catch (err) {
-    console.log(err);
     next(err);
   }
 };

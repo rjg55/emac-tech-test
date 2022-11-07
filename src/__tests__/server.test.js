@@ -67,4 +67,17 @@ describe("/cards/:cardId", () => {
         });
     });
   });
+  describe("ERROR HANDLING", () => {
+    test("status 400 - bad request. input is not a number", () => {
+      return request(app)
+        .get("/cards/battenberg")
+        .expect(400)
+        .then(({ body }) => {
+          expect(body).toEqual({
+            status: 400,
+            msg: "Not a valid cardID",
+          });
+        });
+    });
+  });
 });

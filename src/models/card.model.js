@@ -13,14 +13,19 @@ exports.fetchAllCards = () => {
   return response;
 };
 
-exports.fetchCardByID = (cardId) => {
-  const singleCardFromId = cards.filter((card) => {
-    const copiedCard = { ...card };
-    return copiedCard.id === cardId;
-  });
-  singleCardFromId[0].card_id = cardId;
-  singleCardFromId[0].template = singleCardFromId[0].pages[0].templateId;
-  delete singleCardFromId[0].id;
-  const replaceTempWithImg = findImageFromTemplate(singleCardFromId);
-  return replaceTempWithImg[0];
+exports.fetchCardByID = async (cardId) => {
+  let regex = /card\d{3}/g;
+  if (regex.test(cardId) === true && cardId.length === 7) {
+    const singleCardFromId = cards.filter((card) => {
+      const copiedCard = { ...card };
+      return copiedCard.id === cardId;
+    });
+    singleCardFromId[0].card_id = cardId;
+    singleCardFromId[0].template = singleCardFromId[0].pages[0].templateId;
+    delete singleCardFromId[0].id;
+    const replaceTempWithImg = findImageFromTemplate(singleCardFromId);
+    return replaceTempWithImg[0];
+  } else {
+    throw new Error("Not a valid cardID");
+  }
 };
